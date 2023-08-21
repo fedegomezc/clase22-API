@@ -9,7 +9,7 @@ const getProducts = (req, res) => {
             products: allProducts
         });
     } catch (error) {
-        res.status(500).json({message: 'Error al obtener los productos'});
+        res.status(500).json({ message: 'Error al obtener los productos' });
         console.error(error);
     }
 }
@@ -22,7 +22,7 @@ const getProduct = (req, res) => {
         const product = productsModel.byId(id);
 
         if (!product) {
-            return res.status(404).json({message: 'Producto no encontrado'});
+            return res.status(404).json({ message: 'Producto no encontrado' });
         }
 
         res.status(200).json({
@@ -30,7 +30,7 @@ const getProduct = (req, res) => {
             producto: product
         });
     } catch (error) {
-        res.status(500).json({message: 'Error al obtener el producto'});
+        res.status(500).json({ message: 'Error al obtener el producto' });
         console.error(error);
     }
 }
@@ -52,21 +52,27 @@ const createProduct = (req, res) => {
 
     // Crear producto
     productsModel.create(id, name, description, dimensions, weight);
-    res.status(201).json({message: 'El poducto ' + name + ' ha sido agregado'});
+    res.status(201).json({ message: 'El poducto ' + name + ' ha sido agregado' });
 }
 
 // Actualizar un producto por :id
 const updateProduct = (req, res) => {
     const id = parseInt(req.params.id);
-    const { name, description, dimensions, weight } = req.body;
+    const updatedFields = req.body;
 
     const productFound = productsModel.byId(id);
     if (!productFound) {
         return res.status(404).json({ message: 'Producto no encontrado' });
     }
 
-    productsModel.update(productFound, name, description, dimensions, weight);
-    res.status(200).json({message: 'El producto ha sido actualizado correctamente'});
+    // Actualizar campos proporcionados
+    for (const field in updatedFields) {
+        if (updatedFields.hasOwnProperty(field)) {
+            productFound[field] = updatedFields[field];
+        }
+    }
+    productsModel.update(productFound);
+    res.status(200).json({ message: 'El producto ha sido actualizado correctamente' });
 }
 
 // Eliminar un producto por id
@@ -79,7 +85,7 @@ const deleteProduct = (req, res) => {
     }
 
     productsModel.deleteById(id);
-    res.status(200).json({message: 'Producto eliminado'});
+    res.status(200).json({ message: 'Producto eliminado' });
 }
 
 module.exports = {
