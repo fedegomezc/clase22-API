@@ -6,7 +6,7 @@ try {
   const data = fs.readFileSync('./products.txt', 'utf8');
   products = Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [];
 } catch (error) {
-  console.log(error);
+  console.error(error);
 }
 
 function create(id, name, description, dimensions, weight) {
@@ -18,7 +18,7 @@ function create(id, name, description, dimensions, weight) {
     weight
   });
 
-  fs.writeFileSync('./products.txt', JSON.stringify(products));
+  fs.writeFileSync('./products.txt', JSON.stringify(products, null, 2));
 }
 
 function all() {

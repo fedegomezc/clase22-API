@@ -1,14 +1,21 @@
 require('dotenv').config()
-
 const express = require('express')
 const productsRouter = require('./routes/products');
 
 const app = express()
 app.use(express.json());
-
 app.use('/products', productsRouter);
 
-app.listen(process.env.PORT) //agregar segundo parametro funcion callback con un try catch para verificar que el puerto no está ocupado
+try {
+  app.listen(process.env.PORT, () => {
+    console.log(`Servidor en funcionamiento en el puerto ${process.env.PORT}`);
+  });
+} catch (error) {
+  console.error(`Error al iniciar el servidor: ${error.message}`);
+}
+
+
+
 
 /* [
   {
