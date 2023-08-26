@@ -1,9 +1,9 @@
-const productsModel = require('../models/products');
+import { all, byId, create, update, deleteById } from '../models/products.js';
 
 // Obtener todos los productos
-const getProducts = (req, res) => {
+export const getProducts = (req, res) => {
     try {
-        const allProducts = productsModel.all();
+        const allProducts = all();
         res.status(200).json({
             message: 'Devuelvo todos los productos',
             products: allProducts
@@ -15,11 +15,11 @@ const getProducts = (req, res) => {
 }
 
 // Obtener un producto por :id
-const getProduct = (req, res) => {
+export const getProduct = (req, res) => {
     const id = parseInt(req.params.id);
 
     try {
-        const product = productsModel.byId(id);
+        const product = byId(id);
 
         if (!product) {
             return res.status(404).json({ message: 'Producto no encontrado' });
@@ -36,7 +36,7 @@ const getProduct = (req, res) => {
 }
 
 // Crear un producto
-const createProduct = (req, res) => {
+export const createProduct = (req, res) => {
     const { id, name, description, dimensions, weight } = req.body;
 
     // Validaciones
@@ -44,23 +44,23 @@ const createProduct = (req, res) => {
         return res.status(400).json({ message: 'Faltan campos obligatorios' });
     }
 
-    if (productsModel.byId(id)) {
+    if (byId(id)) {
         return res.status(409).json({ message: 'El ID ya existe' });
     }
 
     // validar formato de dimensiones y peso
 
     // Crear producto
-    productsModel.create(id, name, description, dimensions, weight);
+    create(id, name, description, dimensions, weight);
     res.status(201).json({ message: 'El poducto ' + name + ' ha sido agregado' });
 }
 
 // Actualizar un producto por :id
-const updateProduct = (req, res) => {
+export const updateProduct = (req, res) => {
     const id = parseInt(req.params.id);
     const updatedFields = req.body;
 
-    const productFound = productsModel.byId(id);
+    const productFound = byId(id);
     if (!productFound) {
         return res.status(404).json({ message: 'Producto no encontrado' });
     }
@@ -71,27 +71,19 @@ const updateProduct = (req, res) => {
             productFound[field] = updatedFields[field];
         }
     }
-    productsModel.update(productFound);
+    update(productFound);
     res.status(200).json({ message: 'El producto ha sido actualizado correctamente' });
 }
 
 // Eliminar un producto por id
-const deleteProduct = (req, res) => {
+export const deleteProduct = (req, res) => {
     const id = parseInt(req.params.id);
 
-    const productFound = productsModel.byId(id);
+    const productFound = byId(id);
     if (!productFound) {
         return res.status(404).json({ message: 'Producto no encontrado' });
     }
 
-    productsModel.deleteById(id);
+    deleteById(id);
     res.status(200).json({ message: 'Producto eliminado' });
 }
-
-module.exports = {
-    createProduct,
-    getProducts,
-    getProduct,
-    updateProduct,
-    deleteProduct
-};

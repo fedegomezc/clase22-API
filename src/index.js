@@ -1,9 +1,9 @@
-require('dotenv').config()
-const express = require('express')
-const productsRouter = require('./routes/products');
+import 'dotenv/config'
+import express, { json } from 'express';
+import productsRouter from './routes/products.js';
 
 const app = express()
-app.use(express.json());
+app.use(json());
 app.use('/products', productsRouter);
 
 try {

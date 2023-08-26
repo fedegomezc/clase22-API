@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Camiseta azul",
+    "description": "Camiseta de algodón con cuello redondo",
+    "dimensions": "M",
+    "weight": "200 g",
+    "stock": 3
+  },
+  {
+    "id": 2,
+    "name": "Pantalón",
+    "description": "Pantalón vaquero con corte recto",
+    "dimensions": "32x32",
+    "weight": "500 g"
+  }
+]
