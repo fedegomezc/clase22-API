@@ -37,21 +37,10 @@ export const getProduct = (req, res) => {
 
 // Crear un producto
 export const createProduct = (req, res) => {
-    const { id, name, description, dimensions, weight } = req.body;
-
-    // Validaciones
-    if (!id || !name || !dimensions || !weight) {
-        return res.status(400).json({ message: 'Faltan campos obligatorios' });
-    }
-
-    if (byId(id)) {
-        return res.status(409).json({ message: 'El ID ya existe' });
-    }
-
-    // validar formato de dimensiones y peso
+    const { name, description, dimensions, weight } = req.body;
 
     // Crear producto
-    create(id, name, description, dimensions, weight);
+    create( name, description, dimensions, weight);
     res.status(201).json({ message: 'El poducto ' + name + ' ha sido agregado' });
 }
 

@@ -8,10 +8,17 @@
     "stock": 3
   },
   {
-    "id": 2,
+    "id": 3,
+    "name": "Zapatillas",
+    "description": "Zapatillas deportivas cómodas para correr",
+    "dimensions": "US 10 / EU 44",
+    "weight": "300 g"
+  },
+  {
+    "id": "02227c92-2290-43a4-b691-80389331dbb9",
     "name": "Pantalón",
-    "description": "Pantalón vaquero con corte recto",
+    "description": "hola munndo",
     "dimensions": "32x32",
-    "weight": "500 g"
+    "weight": "0,5 kg"
   }
 ]

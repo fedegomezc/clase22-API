@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const productsFilePath = './products.txt'
@@ -14,9 +15,9 @@ try {
   }
 }
 
-export function create(id, name, description, dimensions, weight) {
+export function create(name, description, dimensions, weight) {
   products.push({
-    id,
+    id: randomUUID(),
     name,
     description,
     dimensions,
