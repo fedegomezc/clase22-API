@@ -1,8 +1,20 @@
 import { randomUUID } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
+import mongoose from '../config/mongo.js';
 
 const productsFilePath = './products.txt'
 let products = [];
+
+// Definimos un esquema para productos
+const productSchema = new mongoose.Schema({
+  name: String,
+  description: String,
+  dimensions: String
+});
+
+// Creamos un modelo basado en el esquema de productos
+const Product = mongoose.model('Product', productSchema);
+
 
 try {
   const data = readFileSync(productsFilePath, 'utf8');
@@ -15,19 +27,18 @@ try {
   }
 }
 
-export function create(name, description, dimensions, weight) {
-  products.push({
-    id: randomUUID(),
-    name,
-    description,
-    dimensions,
-    weight
-  });
-
-  writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
+export function create(data) {
+  try {
+    const newProduct = new Product(data);
+    newProduct.save();
+    return newProduct
+  } catch (error) {
+    throw (`imposible insertar: ${error}`);
+  }
 }
 
-export function all() {
+export async function all() {
+  let products = await Product.find({});
   return products;
 }
 

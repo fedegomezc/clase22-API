@@ -1,10 +1,10 @@
 import { all, byId, create, update, deleteById } from '../models/products.js';
 
 // Obtener todos los productos
-export const getProducts = (req, res) => {
+export const getProducts = async (req, res) => {
     try {
-        const allProducts = all();
-        res.status(200).json({
+        const allProducts = await all();
+        return res.status(200).json({
             message: 'Devuelvo todos los productos',
             products: allProducts
         });
@@ -36,17 +36,22 @@ export const getProduct = (req, res) => {
 }
 
 // Crear un producto
-export const createProduct = (req, res) => {
-    const { name, description, dimensions, weight } = req.body;
-
-    // Crear producto
-    create( name, description, dimensions, weight);
-    res.status(201).json({ message: 'El poducto ' + name + ' ha sido agregado' });
+export const createProduct = async (req, res) => {
+    try{
+        const product = await create(req.body);
+        return res.status(201).json({ 
+            message: 'El producto ha sido agregado',
+            product: product 
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al intenar crear el producto' });
+        console.error(error);
+    }
 }
 
 // Actualizar un producto por :id
 export const updateProduct = (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const updatedFields = req.body;
 
     const productFound = byId(id);
@@ -66,7 +71,7 @@ export const updateProduct = (req, res) => {
 
 // Eliminar un producto por id
 export const deleteProduct = (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
 
     const productFound = byId(id);
     if (!productFound) {

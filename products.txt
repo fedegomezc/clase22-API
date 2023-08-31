@@ -1,24 +1,86 @@
 [
   {
-    "id": 1,
-    "name": "Camiseta azul",
-    "description": "Camiseta de algodón con cuello redondo",
-    "dimensions": "M",
-    "weight": "200 g",
-    "stock": 3
-  },
-  {
-    "id": 3,
-    "name": "Zapatillas",
-    "description": "Zapatillas deportivas cómodas para correr",
-    "dimensions": "US 10 / EU 44",
-    "weight": "300 g"
-  },
-  {
-    "id": "02227c92-2290-43a4-b691-80389331dbb9",
-    "name": "Pantalón",
-    "description": "hola munndo",
+    "id": "4b5e5d49-f522-43c4-84bf-8328e815b6f6",
+    "name": "Buzo rojo",
+    "description": "Buzo frizado con detalle en cuello",
     "dimensions": "32x32",
     "weight": "0,5 kg"
+  },
+  {
+    "id": "1300b6b8-55a9-49da-8644-f3a666d3cd74",
+    "name": "Towels",
+    "description": "Ergonomic, Granite",
+    "dimensions": "15x20x10",
+    "weight": "0,5 kg"
+  },
+  {
+    "id": "de114b88-7d5e-41d0-8072-bfaa2c8625c5",
+    "name": "Chair",
+    "description": "Handcrafted, Fresh",
+    "dimensions": "860x420x798",
+    "weight": "0,46 kg"
+  },
+  {
+    "id": "0d2eab72-1c3c-4c6b-a7dc-1e1fbe928bc8",
+    "name": "Sausages",
+    "description": "Practical, Rubber",
+    "dimensions": "639x704x673",
+    "weight": "0,905 kg"
+  },
+  {
+    "id": "c5f0580d-0852-463c-8c30-f28443947202",
+    "name": "Bacon",
+    "description": "Intelligent, Concrete",
+    "dimensions": "314x21x483",
+    "weight": "0,872 kg"
+  },
+  {
+    "id": "8725397e-30cc-4783-9c32-57c0e33f9aac",
+    "name": "Chair",
+    "description": "Fantastic, Concrete",
+    "dimensions": "815x109x259",
+    "weight": "0,280 kg"
+  },
+  {
+    "id": "a330d34e-d8b1-4d85-a5ba-9af42e7e8966",
+    "name": "Mouse",
+    "description": "Tasty, Rubber",
+    "dimensions": "270x316x136",
+    "weight": "0,633 kg"
+  },
+  {
+    "id": "5f7b6ed6-0a7b-4ce4-98d9-e5185252621c",
+    "name": "Tuna",
+    "description": "Refined, Soft",
+    "dimensions": "865x688x841",
+    "weight": "0,337 kg"
+  },
+  {
+    "id": "84673a7d-c634-4526-9963-ef5ff3db65d9",
+    "name": "Cheese",
+    "description": "Practical, Soft",
+    "dimensions": "417x356x405",
+    "weight": "0,390 kg"
+  },
+  {
+    "id": "aef20d0f-0dd7-4130-b811-996d954255d2",
+    "name": "Ball",
+    "description": "Sleek, Rubber",
+    "dimensions": "361x129x184",
+    "weight": "0,323 kg"
+  },
+  {
+    "id": "c8e83291-ed2e-41ed-b557-4666485e2937",
+    "name": "Shirt",
+    "description": "Fantastic, Cotton",
+    "dimensions": "605x205x772",
+    "weight": "0,34 kg"
+  },
+  {
+    "id": "705263e9-f0be-4b11-8c98-8cc1d1bb71d4",
+    "name": "Soap",
+    "description": "Practical, Granite",
+    "dimensions": "699x796x756",
+    "weight": "0,951 kg"
   }
 ]
